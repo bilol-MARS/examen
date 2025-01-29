@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+        .auth-button {
+            position: absolute;
+            right: 1000px;
+            top: 200px;
+            color: rgb(216, 0, 0);
+            font-size: x-large;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid rgb(208, 237, 21);
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        
+        }
+        .auth-button:hover {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="auth-button">{{request.user.username}} | Log out</a>    
+
+    {% else %}
+
+    <a href="{% url 'login' %}" class="auth-button">Sign in</a>
+
+    {% endif %}
+</body>
+</html>
